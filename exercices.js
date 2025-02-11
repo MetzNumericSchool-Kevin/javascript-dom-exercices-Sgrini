@@ -48,3 +48,34 @@ greenBtn.addEventListener("click", () => {
   boitesMagiques[1].style.backgroundColor = "green";
   boitesMagiques[2].style.backgroundColor = "green";
 });
+
+// Aventurier, voici ma boutique
+
+const potions = [
+  {
+    nom: "Potion de soin",
+    description:
+      "Cette potion rouge vif a une odeur de fraise des bois. Un seul gorgée et vos blessures se referment comme par magie ! Effets secondaires possibles: cheveux roses pendant 24h.",
+    prix: 10,
+  },
+  {
+    nom: "Potion de sommeil",
+    description:
+      "Un liquide bleu nuit qui sent la lavande et les rêves. Une goutte et vous dormirez comme un bébé dragon ! Attention: ne pas utiliser si vous devez combattre un troll dans les prochaines 8 heures.",
+    prix: 50,
+  },
+];
+
+const listePotions = document.querySelector("#liste_potions");
+const potionTemplate = document.querySelector("#template_potion");
+
+potions.forEach((potion) => {
+  const potionElement = potionTemplate.textContent.cloneNode(true);
+
+  potionElement.querySelector(".nom_potion").textContent = potion.nom;
+  potionElement.querySelector(".description_potion").textContent =
+    potion.description;
+  potionElement.querySelector(".prix_potion").textContent = potion.prix;
+
+  potionList.appendChild(potionElement);
+});
