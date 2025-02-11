@@ -70,12 +70,29 @@ const listePotions = document.querySelector("#liste_potions");
 const potionTemplate = document.querySelector("#template_potion");
 
 potions.forEach((potion) => {
-  const potionElement = potionTemplate.textContent.cloneNode(true);
+  const potionElement = potionTemplate.content.cloneNode(true);
 
   potionElement.querySelector(".nom_potion").textContent = potion.nom;
   potionElement.querySelector(".description_potion").textContent =
     potion.description;
   potionElement.querySelector(".prix_potion").textContent = potion.prix;
 
-  potionList.appendChild(potionElement);
+  listePotions.appendChild(potionElement);
+});
+
+const form = document.querySelector("form");
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const formData = new FormData(form);
+
+  const nouvellePotion = potionTemplate.content.cloneNode(true);
+
+  nouvellePotion.querySelector(".nom_potion").textContent = formData.get("nom");
+  nouvellePotion.querySelector(".description_potion").textContent =
+    formData.get("description");
+  nouvellePotion.querySelector(".prix_potion").textContent =
+    formData.get("prix");
+
+  listePotions.append(nouvellePotion);
 });
